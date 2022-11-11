@@ -1,0 +1,157 @@
+@font-face {
+    font-family: 'digital-7regular';
+    src: url('./fonts/digital-7-webfont.woff2') format('woff2'),
+         url('./fonts/digital-7-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    background: lightgrey;
+}
+
+a {
+    text-decoration: none;
+}
+
+h1 {
+    font-weight: 200;
+    color: rgba(255,255,255, .82)
+}
+
+.container {
+    height: 100vh;
+}
+
+.calculator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    margin: 5em auto 0 auto;
+    padding: .8em 1em;
+    background: #008aab;
+    width: 100%;
+    height: 400px;
+    max-width: 280px;
+    border-radius: 40px 40px 20px 20px;
+    border-top: 4px solid white;
+    border-bottom: 10px solid white;
+}
+
+.title {
+    font-family: sans-serif;
+    font-size: .7rem;
+}
+
+.title h1 span {
+    font-weight: bold;
+}
+
+.display {
+    font-family: 'digital-7regular', sans-serif;
+    font-weight: bold;
+    font-size: 1.6rem;
+    letter-spacing: .045em;
+    text-align: right;
+    background: grey;
+    width: 80%;
+    padding: .075em .2em;
+    border-radius: 5px;
+    box-shadow: inset 0 0 5px #000;
+    border-top: 3px solid #00789c;
+    border-right: 3px solid #00789c;
+    border-left: 3px solid #0392b0;
+    border-bottom: 3px solid #0392b0;
+}
+
+.buttons {
+    display: flex;
+    width: 85%;
+    text-align: center;
+    /* margin-top: .8em; */
+}
+
+.buttons a {
+    font-size: 1.3rem;
+}
+
+.buttons-numbers, .buttons-operators {
+    display: flex;
+}
+
+.buttons-numbers {
+    flex-wrap: wrap;
+    width: 180px;
+}
+
+.buttons-operators {
+    flex-direction: column;
+}
+
+.button-number, .button-operator {
+    border-radius: 30px 30px 60px 60px;
+    width: 41px;
+}
+
+.button-number {
+    display: inline-block;
+    margin: .2em 0 0 .4em;
+    background: #00a9bb;
+    color: #fff;
+    border: 1px solid rgba(0,0,0,.5);
+    box-shadow: inset 0 0 5px rgba(255,255,255,.3);
+}
+
+.button-number:hover {
+    border: 1px solid rgba(0,0,0,.3);
+    box-shadow: none;
+    transform: translateY(1px) scale(.95);
+}
+
+.button-operator {
+    background: #fff;
+    color: #000;
+    margin: .2em .3em 0 0;
+    border: 1px solid #000;
+}
+
+.button-operator:hover {
+    border: 1px solid rgba(0,0,0,.8);
+    transform: translateY(1px) scale(.95);
+}
+
+.buttons-power_equals {
+    display: flex;
+    align-items: center;
+    width: 80%;
+    margin-top: 1em;
+}
+
+.button-power, .button-equals {
+    background: #fff;
+    width: 112px;
+    padding: .2em;
+    border-radius: 30px 30px 60px 60px;
+    text-align: center;
+    color: #000;
+    border: 1px solid #000;
+}
+
+.button-power {
+    margin-right: .5em;
+}
+
+.button-equals {
+    margin-left: .5em;
+}
+
+.button-power:hover, .button-equals:hover {
+    border: 1px solid rgba(0,0,0,.8);
+    transform: translateY(2px) scale(.95);
+}

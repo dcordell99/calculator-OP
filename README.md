@@ -1,2 +1,4 @@
 # calculator-OP
-Visual Calculator
+Visual Calculator to practice HTML, CSS and JS.
+
+Usage just like a regular calculator.
