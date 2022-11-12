@@ -5,15 +5,6 @@ let operate = {
     "divide": function(a, b) { return a / b }
 }
 
-
-
-// const add = (a, b) => a + b;
-const subtract = (a, b) => a - b;
-const multiply = (a, b) => a * b;
-const divide = (a, b) => a / b;
-
-// const operate = (operator, a, b) => operator(a, b);
-
 let display = document.querySelector('.display');
 let numberBtns = document.querySelectorAll('.button-number');
 let operatorBtns = document.querySelectorAll('.buttons-operators');
@@ -28,6 +19,8 @@ let theOperator;
 
 power.addEventListener('click', function() {
     display.textContent = '';
+    a = undefined;
+    a = undefined;
 });
 
 numberBtns.forEach(number => {
@@ -35,7 +28,8 @@ numberBtns.forEach(number => {
         if(display.textContent.length > 9) return;
         if(secondNumber) display.textContent = '';
         switch (e.target.getAttribute('id')) {
-            case 'zero': display.textContent = display.textContent += '0'; secondNumber = false;
+            case 'zero': display.textContent = display.textContent += '0'; 
+            secondNumber = false;
             break;
             case 'one': display.textContent = display.textContent += '1';
             secondNumber = false;
@@ -65,34 +59,49 @@ numberBtns.forEach(number => {
             secondNumber = false;
             break;
         }
+        if(a) b = +e.target.textContent;
     });
 });
 
 operatorBtns.forEach(operator => {
     operator.addEventListener('click', (e) => {
-        if(display.textContent.length > 0) {
+        switch (e.target.getAttribute('id')) {
+            case 'add': theOperator = 'add';
+            break;
+            case 'subtract': theOperator = 'subtract';
+            break;
+            case 'multiply': theOperator = 'multiply';
+            break;
+            case 'divide': theOperator = 'divide';
+            break;
+        }
+        if(!a) {
             a = +display.textContent;
-            switch (e.target.getAttribute('id')) {
-                case 'add': theOperator = 'add';
-                break;
-                case 'subtract': theOperator = 'subtract';
-                break;
-                case 'multiply': theOperator = 'multiply';
-                break;
-                case 'divide': theOperator = 'divide';
-                break;
-            }
+            secondNumber = true; 
+        } else if (a && !b) {
+            b = +display.textContent;
+            display.textContent = operate[theOperator](a,b);
+            b = +display.textContent;
+            secondNumber = true;
+        } else if(a && b && !secondNumber) {
+            display.textContent = operate[theOperator](a,b);
+            b = +display.textContent;
+            a = b
             secondNumber = true;
         } else {
             return;
         }
-        console.log(a, theOperator);
+        console.log(a, b, theOperator);
     });
 });
 
 equalsBtn.addEventListener('click', () => {
-    if(display.textContent.length > 0) {
-        b = +display.textContent;
+    if(!a) {
+        return;
+    } else if(a && !b || a && b) {
         display.textContent = operate[theOperator](a,b);
-    }
+        a = +display.textContent;
+        secondNumber = true;
+    } 
+    console.log(a, b, theOperator);
 });
